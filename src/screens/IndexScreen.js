@@ -10,6 +10,14 @@ const IndexScreen = ({ navigation }) => {
   
   useEffect(() => {
       getBlogPosts();
+
+      navigation.addListener('didFocus', () => {
+        getBlogPosts();
+      });
+
+      return () => {
+      listerner.remove();
+      };
   },[]);
 
   return (
